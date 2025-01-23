@@ -1,4 +1,4 @@
-﻿@model List<About>
+﻿@model List<ResultAboutDto>
 @{
     ViewData["Title"] = "Index";
 }
@@ -20,9 +20,11 @@
             <td>@item.AboutId</td>
             <td>@item.Vision</td>
             <td>@item.Mission</td>
-            <td><a href="#" class="btn btn-danger">Delete</a></td>
-            <td><a href="#" class="btn btn-danger">Update</a></td>
+            <td><a asp-action="DeleteAbout" asp-route-id="@item.AboutId" class="btn btn-outline-primary">Delete</a></td>
+            <td><a asp-action="EditAbout" asp-route-id="@item.AboutId" class="btn btn-outline-danger">Update</a></td>
         </tr>
     }
 
 </table>
+
+<a asp-action="CreateAbout" asp-controller="AdminAbout" class="btn btn-outline-success">Create About</a>

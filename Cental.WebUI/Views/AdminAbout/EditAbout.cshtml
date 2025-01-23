@@ -1,0 +1,52 @@
+﻿@model UpdateAboutDto
+@{
+    ViewData["Title"] = "EditAbout";
+}
+
+<h1>Edit About</h1>
+
+<form method="post">
+
+    <input type="hidden" asp-for="AboutId" />
+
+    <label> Our Vision</label>
+    <input type="text" asp-for="Vision" class="form-control" />
+
+    <label> Our Mission</label>
+    <input type="text" asp-for="Mission" class="form-control" />
+
+
+    <label> Upper Discription</label>
+    <input type="text" asp-for="Description1" class="form-control" />
+
+    <label> Lower Vision</label>
+    <input type="text" asp-for="Description2" class="form-control" />
+
+    <label> Start Year </label>
+    <input type="text" asp-for="StartYear" class="form-control" />
+    <label> Image 1</label>
+    <input type="text" asp-for="ImageUrl1" class="form-control" />
+    <label> Image  </label>
+    <input type="text" asp-for="ImageUrl2" class="form-control" />
+
+    <label> Item </label>
+    <input type="text" asp-for="Item1" class="form-control" />
+    <label> Item 2 </label>
+    <input type="text" asp-for="Item2" class="form-control" />
+    <label> Item 3 </label>
+    <input type="text" asp-for="Item3" class="form-control" />
+    <label> Item 4 </label>
+    <input type="text" asp-for="Item4" class="form-control" />
+
+    <label> Name Surname</label>
+    <input type="text" asp-for="NameSurname" class="form-control" />
+
+    <label> Job Title</label>
+    <input type="text" asp-for="JobTitle" class="form-control" />
+    <label>Profile Photo</label>
+    <input type="text" asp-for="ProfilePicture" class="form-control" />
+    <br />
+    <button class="btn btn-outline-primary">Edit</button>
+
+</form>
+
