@@ -1,0 +1,24 @@
+﻿@model CreateBannerDTO
+@{
+    ViewData["Title"] = "CreateBanner";
+}
+
+<h1>Create Banner</h1>
+
+
+<form method="post">
+
+    <label> Image</label>
+    <input type="text" asp-for="ImageUrl" class="form-control" />
+
+    <label> Title</label>
+    <input type="text" asp-for="Title" class="form-control" />
+
+
+    <label> Description</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    
+    <br />
+    <button class="btn btn-outline-primary">Save</button>
+
+</form>
