@@ -2,7 +2,7 @@
 
 namespace Cental.WebUI.ViewComponents.AdminLayout
 {
-	public class _AdminLayoutNavbarComponent: ViewComponent
+	public class _AdminLayoutSidebarComponent : ViewComponent
 	{
 
 		public IViewComponentResult Invoke()
