@@ -8,7 +8,12 @@ namespace Cental.WebUI.Mappings
 	{
 		public AboutMapping()
 		{
-			CreateMap<About, ResultListDto>().ReverseMap();
+			var thisyear = DateTime.Now.Year;
+			CreateMap<About, ResultListDto>().ForMember(destination => destination.ExperienceYear,
+												o => o.MapFrom(src => thisyear - src.StartYear));
+			CreateMap<About, ResultAboutDto>().ReverseMap();
+			CreateMap<About, CreateAboutDto>().ReverseMap();
+			CreateMap<About, UpdateAboutDto>().ReverseMap();
 		}
 
 

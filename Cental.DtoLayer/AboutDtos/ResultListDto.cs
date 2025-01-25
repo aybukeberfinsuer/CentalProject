@@ -12,7 +12,7 @@ namespace Cental.DtoLayer.AboutDtos
 		public string Mission { get; set; }
 		public string Description1 { get; set; }
 		public string Description2 { get; set; }
-		public int StartYear { get; set; }
+		public int ExperienceYear { get; set; }
 		public string ImageUrl1 { get; set; }
 		public string ImageUrl2 { get; set; }
 		public string Item1 { get; set; }
