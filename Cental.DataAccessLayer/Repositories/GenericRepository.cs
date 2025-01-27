@@ -11,7 +11,7 @@ namespace Cental.DataAccessLayer.Repositories
 {
 	public class GenericRepository<T> : IGenericDal<T> where T : BaseEntity
 	{
-		private readonly CentalContext _centalContext;
+		protected readonly CentalContext _centalContext;
 
 		public GenericRepository(CentalContext centalContext)
 		{
