@@ -1,0 +1,61 @@
+﻿@model CreateCarDTO
+@{
+    ViewData["Title"] = "Create New Car";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+<form method="post">
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <label>Car Model</label>
+            <input type="text" asp-for="ModelName" class="form-control" />
+            <br />
+            <label>Car Image</label>
+            <input type="text" asp-for="ImageUrl" class="form-control" />
+            <br />
+            <label>Model Year</label>
+            <input type="text" asp-for="ModelName" class="form-control" />
+            <br />
+            <label>Booking Price</label>
+            <input type="text" asp-for="Price" class="form-control" />
+            <br />
+            <label>Cont of Seat</label>
+            <input type="number" asp-for="SeatCount" class="form-control" />
+            <br />
+           
+        </div>
+
+        <div class="col-lg-6">
+            <label>Kilometer</label>
+            <input type="number" asp-for="Kilometer" class="form-control" />
+            <br />
+            <label>Brand</label>
+            <select asp-items="@ViewBag.brands" asp-for="BrandId" class="form-control">
+                <option> Select brand  </option>
+            </select>
+            <br />
+            <label>Gas Type</label>
+            <select asp-items="@ViewBag.GasTypes" asp-for="GasType" class="form-control">
+                <option> Select gas type  </option>
+            </select>
+            <br />
+            <label>Gear Type</label>
+            <select asp-items="@ViewBag.GearTypes" asp-for="GearType" class="form-control">
+                <option> Select gear type  </option>
+            </select>
+            <br />
+            <label>Transmissions</label>
+            <select asp-items="@ViewBag.Transmissions" asp-for="Transmission" class="form-control">
+                <option> Select transmission  </option>
+            </select>
+            <br />
+        </div>
+    </div>
+
+   
+   
+    <button class="btn btn-outline-dark">Save</button>
+
+</form>
+
