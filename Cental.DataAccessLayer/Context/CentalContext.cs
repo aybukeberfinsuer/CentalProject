@@ -13,6 +13,9 @@ namespace Cental.DataAccessLayer.Context
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("server=LAPTOP-JKIESAIB;database=CentalDb;integrated security=true; trustServerCertificate=true;");
+
+			optionsBuilder.UseLazyLoadingProxies();// tüm ilişkili tablolarda propların başına virtual kelimesini eklemek gerekiyor.
+
 		}
 
 		public DbSet<About> Abouts { get; set; }
