@@ -8,6 +8,7 @@ using Cental.DataAccessLayer.Context;
 using Cental.EntityLayer.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,13 @@ var builder = WebApplication.CreateBuilder(args);
 //about service gördüðün zaman aboutmanager sýnýfýndan bir nesne örneði al ve iþlemi onunla yap.
 
 builder.Services.AddDbContext<CentalContext>();
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<CentalContext>();
+builder.Services.AddIdentity<AppUser, AppRole>(cfg =>
+{
+	cfg.User.RequireUniqueEmail = true;
+})
+												.AddEntityFrameworkStores<CentalContext>()
+												.AddErrorDescriber<CustomErrorDescriber>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddServiceRegistrations();
@@ -26,7 +33,14 @@ builder.Services.AddFluentValidationAutoValidation()
 	.AddValidatorsFromAssemblyContaining<BrandValidator>();
 
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(option => {
+	option.Filters.Add(new AuthorizeFilter());
+	});
+builder.Services.ConfigureApplicationCookie(config =>
+{
+	config.LoginPath = "/Login/Index";
+	config.LogoutPath = "/Login/Logout";
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,7 +55,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
