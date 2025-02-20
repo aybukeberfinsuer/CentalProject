@@ -15,7 +15,7 @@ namespace Cental.WebUI.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Index(UserLoginDto model)
+		public async Task<IActionResult> Index(UserLoginDto model,string? returnUrl)
 		{
 			var result = await _signInManager.PasswordSignInAsync(model.UserName,model.Password,false,false);
 			if (!result.Succeeded) {
@@ -23,6 +23,12 @@ namespace Cental.WebUI.Controllers
 				ModelState.AddModelError(string.Empty, "Username or password is wrong.");
 				return View(model);
 			}
+
+			if (returnUrl != null)
+			{
+				return Redirect(returnUrl);
+			}
+
 			return RedirectToAction("Index","AdminAbout");
 			
 		}
@@ -30,7 +36,7 @@ namespace Cental.WebUI.Controllers
 		public async Task<IActionResult> Logout()
 		{
 			await _signInManager.SignOutAsync();
-			return RedirectToAction("Index","Defaut");
+			return RedirectToAction("Index","Default");
 		}
 
 	}
